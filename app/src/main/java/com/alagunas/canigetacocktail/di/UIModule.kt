@@ -1,4 +1,7 @@
 package com.alagunas.canigetacocktail.di
 
-class UIModule {
+import org.koin.dsl.module
+
+val uiModule = module {
+
 }
