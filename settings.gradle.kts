@@ -13,8 +13,8 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "CanIGetACocktail"
-include ':app'
-include ':domain'
-include ':data'
-include ':usecases'
-include ':common'
+include(":app")
+include(":usecases")
+include(":data")
+include(":domain")
+include(":common")
