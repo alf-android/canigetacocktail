@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">CanIGetACocktail</string>
+    <string name="title_activity_cocktail_detail">CocktailDetailActivity</string>
+    <string name="sex_on_the_beach">Sex on the beach</string>
 </resources>

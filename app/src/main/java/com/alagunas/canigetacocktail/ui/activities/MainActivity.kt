@@ -1,5 +1,6 @@
 package com.alagunas.canigetacocktail.ui.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -29,6 +30,10 @@ class MainActivity : AppCompatActivity() {
         binding.btnGetLast.setOnClickListener {
             viewModel.getAllCocktails()
 
+        }
+
+        binding.btnGoToNextScreen.setOnClickListener {
+            startActivity(Intent(this, CocktailDetailActivity::class.java))
         }
 
         observe(viewModel.showCocktail) { cocktail ->
