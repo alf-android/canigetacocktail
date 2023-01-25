@@ -35,9 +35,9 @@ android {
 dependencies {
 
     api("androidx.core:core-ktx:1.7.0")
-    testApi("junit:junit:4.13.2")
-    androidTestApi("androidx.test.ext:junit:1.1.5")
-    androidTestApi("androidx.test.espresso:espresso-core:3.5.1")
+    testImplementation("junit:junit:4.13.2")
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     api("io.insert-koin:koin-android:3.2.0")
 }
