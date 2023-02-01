@@ -1,17 +1,14 @@
-package com.alagunas.canigetacocktail.ui.activities
+package com.alagunas.canigetacocktail.ui.screens
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -23,27 +20,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.alagunas.canigetacocktail.R
 import com.alagunas.canigetacocktail.ui.activities.ui.theme.CanIGetACocktailTheme
-
-class CocktailDetailActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            CanIGetACocktailTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    CocktailDetailCardWithImage("")
-                }
-            }
-        }
-    }
-}
+import imageShape
 
 @Composable
 fun CocktailDetailCardWithText(name: String, description: String) {
     Column {
+        Spacer(modifier = Modifier.height(20.dp))
         Text(
             text = name,
             fontWeight = FontWeight.Bold,
@@ -53,6 +35,7 @@ fun CocktailDetailCardWithText(name: String, description: String) {
                 .fillMaxWidth()
                 .wrapContentWidth(align = Alignment.CenterHorizontally)
         )
+        Spacer(modifier = Modifier.height(50.dp))
         Text(
             text = description,
             textAlign = TextAlign.Justify,
@@ -62,7 +45,6 @@ fun CocktailDetailCardWithText(name: String, description: String) {
                 .fillMaxWidth()
                 .wrapContentWidth(align = Alignment.CenterHorizontally)
                 .padding(
-                    top = 10.dp,
                     start = 10.dp,
                     end = 10.dp
                 )
@@ -73,7 +55,7 @@ fun CocktailDetailCardWithText(name: String, description: String) {
 }
 
 @Composable
-fun CocktailDetailCardWithImage(imageFromAPI: String) {
+fun CocktailDetailCardScreen(imageFromAPI: String, cocktailId: Int) {
     val image = painterResource(R.drawable.sex_on_the_beach)
     Column(
         modifier = Modifier
@@ -84,36 +66,25 @@ fun CocktailDetailCardWithImage(imageFromAPI: String) {
             painter = image,
             contentDescription = null,
             modifier = Modifier
-                .fillMaxWidth()
-                .wrapContentWidth(align = Alignment.CenterHorizontally)
+                .size(200.dp)
+                .align(alignment = Alignment.CenterHorizontally)
+//                .fillMaxWidth()
+//                .wrapContentWidth(align = Alignment.CenterHorizontally)
+                .clip(imageShape)
+                .border(width = 5.dp, color = Color.Black, shape = imageShape)
         )
         CocktailDetailCardWithText(
             stringResource(R.string.sex_on_the_beach),
             "Es un cocktail con ron y algunos zumos. Pueden ser zumo de piña y zumo de melocotón, pero si lo pruebas a añadir el blue, estará riquísimo."
         )
+        Text(text = "id: $cocktailId")
     }
 }
 
-//@Preview(showBackground = true, name = "Cocktail Card Preview")
-//@Composable
-//fun CocktailDetailCardWithTextPreview(){
-//    CanIGetACocktailTheme {
-//        CocktailDetailCardWithText("sex on the beach", "Es un cocktail con ron.")
-//    }
-//}
-//
-//@Preview(showBackground = true)
-//@Composable
-//fun DefaultPreview() {
-//    CanIGetACocktailTheme {
-//
-//    }
-//}
-
 @Preview(showBackground = true)
 @Composable
-fun CocktailDetailCardWithImagePreview() {
+fun CocktailDetailCardScreenPreview() {
     CanIGetACocktailTheme {
-        CocktailDetailCardWithImage("")
+        CocktailDetailCardScreen("", 4)
     }
 }

@@ -16,7 +16,7 @@ class CocktailApplication: Application() {
 
     private fun initKoin() {
         startKoin {
-            androidContext(this@CocktailApplication)
+            androidContext(applicationContext)
             modules(
                 listOf(uiModule, dataModule)
             )
