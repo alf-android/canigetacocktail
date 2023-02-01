@@ -2,7 +2,11 @@
 
 
 buildscript {
-    val compose_version by extra("1.2.0")
+
+    extra.apply {
+        set("compose_version", "1.2.0")
+    }
+
     repositories {
         maven("https://maven.google.com")
         mavenCentral()

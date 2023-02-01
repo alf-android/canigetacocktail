@@ -9,10 +9,10 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import kotlin.random.Random
 
-class CocktailDetailViewModel(private val cocktailDAO: CocktailDAO) : BaseViewModel() {
+class CocktailListViewModel(private val cocktailDAO: CocktailDAO) : BaseViewModel() {
 
-    private val _showCocktail: MutableStateFlow<Cocktail?> = MutableStateFlow(null)
-    val showCocktail: StateFlow<Cocktail?> = _showCocktail
+    private val _showCocktails: MutableStateFlow<List<Cocktail>?> = MutableStateFlow(null)
+    val showCocktails: StateFlow<List<Cocktail>?> = _showCocktails
 
     fun setCocktail(name: String) {
         viewModelScope.launch {
@@ -30,8 +30,14 @@ class CocktailDetailViewModel(private val cocktailDAO: CocktailDAO) : BaseViewMo
     fun getAllCocktails() {
         viewModelScope.launch {
             val cocktail = cocktailDAO.getAll().lastOrNull()
-            _showCocktail.value = null
-            _showCocktail.value = Cocktail(id = cocktail?.id?:0, name = cocktail?.name?:"Cocktail not found", description = "${cocktailDAO.getAll().size}")
+            _showCocktails.value = null
+            _showCocktails.value = listOf(
+                Cocktail(
+                    id = cocktail?.id ?: 0,
+                    name = cocktail?.name ?: "Cocktail not found",
+                    description = "${cocktailDAO.getAll().size}"
+                )
+            )
         }
     }
 }
