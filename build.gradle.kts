@@ -5,6 +5,8 @@ buildscript {
 
     extra.apply {
         //UI
+        set("lifecycleVersion", "2.5.1")
+        set("navigationVersion", "2.5.3")
         set("composeVersion", "1.2.0")
         set("composeMaterialVersion", "1.2.1")
         set("composeMaterial3Version", "1.0.0-alpha01")
@@ -15,6 +17,12 @@ buildscript {
         set("retrofitVersion", "2.9.0")
         set("gsonVersion", "2.9.0")
         set("gsonConverterVersion", "2.9.0")
+        //DI
+        set("koinVersion", "3.2.0")
+        //Test
+        set("junitVersion", "4.13.2")
+        set("testJunitVersion", "1.1.5")
+        set("testEspressoVersion", "3.5.1")
     }
 
     repositories {

@@ -34,11 +34,12 @@ android {
 
 dependencies {
 
-    api("androidx.core:core-ktx:1.7.0")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    api("androidx.core:core-ktx:1.7.0") //It needs API 33
 
-    api("io.insert-koin:koin-android:3.2.0")
-    api("io.insert-koin:koin-androidx-compose:3.2.0")
+    api("io.insert-koin:koin-android:${rootProject.extra["koinVersion"]}")
+    api("io.insert-koin:koin-androidx-compose:${rootProject.extra["koinVersion"]}")
+
+    testImplementation("junit:junit:${rootProject.extra["junitVersion"]}")
+    androidTestImplementation("androidx.test.ext:junit:${rootProject.extra["testJunitVersion"]}")
+    androidTestImplementation("androidx.test.espresso:espresso-core:${rootProject.extra["testEspressoVersion"]}")
 }
