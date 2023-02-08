@@ -4,7 +4,17 @@
 buildscript {
 
     extra.apply {
-        set("compose_version", "1.2.0")
+        //UI
+        set("composeVersion", "1.2.0")
+        set("composeMaterialVersion", "1.2.1")
+        set("composeMaterial3Version", "1.0.0-alpha01")
+        //DB
+        set("roomVersion", "2.4.3")
+        //API
+        set("okhttpVersion", "4.9.3")
+        set("retrofitVersion", "2.9.0")
+        set("gsonVersion", "2.9.0")
+        set("gsonConverterVersion", "2.9.0")
     }
 
     repositories {
