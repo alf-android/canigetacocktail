@@ -40,4 +40,5 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     api("io.insert-koin:koin-android:3.2.0")
+    api("io.insert-koin:koin-androidx-compose:3.2.0")
 }

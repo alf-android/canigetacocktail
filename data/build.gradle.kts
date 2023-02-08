@@ -40,10 +40,14 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":common"))
 
-    val roomVersion = "2.4.3"
+    implementation("androidx.room:room-runtime:${rootProject.extra["roomVersion"]}")
+    annotationProcessor("androidx.room:room-compiler:${rootProject.extra["roomVersion"]}")
+    kapt("androidx.room:room-compiler:${rootProject.extra["roomVersion"]}")
+    implementation("androidx.room:room-ktx:${rootProject.extra["roomVersion"]}")
 
-    implementation("androidx.room:room-runtime:$roomVersion")
-    annotationProcessor("androidx.room:room-compiler:$roomVersion")
-    kapt("androidx.room:room-compiler:$roomVersion")
-    implementation("androidx.room:room-ktx:$roomVersion")
+    implementation("com.squareup.retrofit2:retrofit:${rootProject.extra["retrofitVersion"]}")
+    implementation("com.squareup.okhttp3:okhttp:${rootProject.extra["okhttpVersion"]}")
+    implementation("com.squareup.okhttp3:logging-interceptor:${rootProject.extra["okhttpVersion"]}")
+    implementation("com.google.code.gson:gson:${rootProject.extra["gsonVersion"]}")
+    implementation("com.squareup.retrofit2:converter-gson:${rootProject.extra["gsonConverterVersion"]}")
 }

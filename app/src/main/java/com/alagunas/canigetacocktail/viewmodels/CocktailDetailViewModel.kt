@@ -18,9 +18,9 @@ class CocktailDetailViewModel(private val cocktailDAO: CocktailDAO) : BaseViewMo
         viewModelScope.launch {
             cocktailDAO.insert(
                 CocktailEntity(
-                    id = List(1) { Random.nextInt(100) }.first(),
+                    id = List(1) { Random.nextInt(100) }.first().toString(),
                     name = name,
-                    desription = ""
+                    instruction = ""
                 )
             )
         }
@@ -31,7 +31,7 @@ class CocktailDetailViewModel(private val cocktailDAO: CocktailDAO) : BaseViewMo
         viewModelScope.launch {
             val cocktail = cocktailDAO.getAll().lastOrNull()
             _showCocktail.value = null
-            _showCocktail.value = Cocktail(id = cocktail?.id?:0, name = cocktail?.name?:"Cocktail not found", description = "${cocktailDAO.getAll().size}")
+            _showCocktail.value = Cocktail(id = cocktail?.id?:"0", name = cocktail?.name?:"Cocktail not found", description = "${cocktailDAO.getAll().size}")
         }
     }
 }
