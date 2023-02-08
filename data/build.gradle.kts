@@ -50,4 +50,8 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:${rootProject.extra["okhttpVersion"]}")
     implementation("com.google.code.gson:gson:${rootProject.extra["gsonVersion"]}")
     implementation("com.squareup.retrofit2:converter-gson:${rootProject.extra["gsonConverterVersion"]}")
+
+    testImplementation("junit:junit:${rootProject.extra["junitVersion"]}")
+    androidTestImplementation("androidx.test.ext:junit:${rootProject.extra["testJunitVersion"]}")
+    androidTestImplementation("androidx.test.espresso:espresso-core:${rootProject.extra["testEspressoVersion"]}")
 }

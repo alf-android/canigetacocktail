@@ -3,6 +3,7 @@ package com.alagunas.usecases
 import com.alagunas.data.MyResult
 import com.alagunas.domain.model.Cocktail
 import com.alagunas.data.repositories.CocktailRepository
+import com.alagunas.usecases.core.UseCase
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 

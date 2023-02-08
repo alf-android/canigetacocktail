@@ -6,8 +6,7 @@ import com.alagunas.data.datamanager.db.CocktailDAO
 import com.alagunas.data.datamanager.db.CocktailEntity
 import com.alagunas.domain.model.Cocktail
 import com.alagunas.data.repositories.CocktailRepository
-import com.alagunas.usecases.GetCocktailsUseCase
-import com.alagunas.usecases.UseCase
+import com.alagunas.usecases.core.UseCase
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import kotlin.random.Random

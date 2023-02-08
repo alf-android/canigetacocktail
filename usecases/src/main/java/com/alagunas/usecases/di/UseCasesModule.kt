@@ -3,7 +3,7 @@ package com.alagunas.usecases.di
 import com.alagunas.data.MyResult
 import com.alagunas.domain.model.Cocktail
 import com.alagunas.usecases.GetCocktailsUseCase
-import com.alagunas.usecases.UseCase
+import com.alagunas.usecases.core.UseCase
 import kotlinx.coroutines.flow.Flow
 import org.koin.dsl.module
 
