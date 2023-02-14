@@ -19,7 +19,7 @@ class CocktailRemoteDatasourceImpl(
     override suspend fun getCocktails(firstLetter: String): MyResult<List<Cocktail>, String> =
         withContext(backDispatcher) {
             return@withContext try {
-                val resultCall = cocktailService.getCocktailsByFirstLetter("a")
+                val resultCall = cocktailService.getCocktailsByFirstLetter(firstLetter)
                 if (resultCall.isSuccessful) {
                     MyResult.Success(resultCall.body()?.cocktails?.map { it.toCocktail() }
                         ?: listOf())
