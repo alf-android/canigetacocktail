@@ -10,6 +10,7 @@ buildscript {
         set("composeVersion", "1.2.0")
         set("composeMaterialVersion", "1.2.1")
         set("composeMaterial3Version", "1.0.0-alpha01")
+        set("coilVersion", "2.2.2")
         //DB
         set("roomVersion", "2.4.3")
         //API

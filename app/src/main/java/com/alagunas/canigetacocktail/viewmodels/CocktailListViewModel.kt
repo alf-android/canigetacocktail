@@ -4,7 +4,6 @@ import androidx.lifecycle.viewModelScope
 import com.alagunas.data.MyResult
 import com.alagunas.data.datamanager.db.CocktailDAO
 import com.alagunas.data.datamanager.db.CocktailEntity
-import com.alagunas.data.repositories.CocktailRepository
 import com.alagunas.domain.model.Cocktail
 import com.alagunas.usecases.core.UseCase
 import kotlinx.coroutines.flow.Flow
@@ -16,8 +15,7 @@ import kotlin.random.Random
 
 class CocktailListViewModel(
     private val cocktailDAO: CocktailDAO,
-    private val cocktailRepository: CocktailRepository,
-    val getCocktailsUseCase: UseCase<String, Flow<MyResult<List<Cocktail>, String>>>
+    private val getCocktailsUseCase: UseCase<String, Flow<MyResult<List<Cocktail>, String>>>
 ) : BaseViewModel() {
 
 //    val showCocktails: StateFlow<MyResult<List<Cocktail>, String>> =
@@ -32,7 +30,7 @@ class CocktailListViewModel(
     val showCocktails = _showCocktails.asStateFlow()
 
     init {
-        getCocktailsByFirstLetter("a")
+        getCocktailsByFirstLetter("A")
     }
 
     fun setCocktail(name: String) {

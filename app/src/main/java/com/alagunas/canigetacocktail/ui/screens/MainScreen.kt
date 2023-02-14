@@ -15,8 +15,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import buttonShape
 import com.alagunas.canigetacocktail.R
-import com.alagunas.canigetacocktail.ui.theme.CocktailsTopAppBar
-import com.alagunas.canigetacocktail.ui.theme.MyYellow
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -66,11 +64,8 @@ fun MainScreen(
                 }
             }
         }
-
     }
-
 }
-
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview(showBackground = true)
@@ -78,4 +73,3 @@ fun MainScreen(
 fun MainScreenPreview() {
     MainScreen()
 }
-

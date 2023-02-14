@@ -17,11 +17,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.alagunas.canigetacocktail.ui.theme.CanIGetACocktailTheme
 import com.alagunas.canigetacocktail.ui.navigation.CocktailArgType
 import com.alagunas.canigetacocktail.ui.screens.CocktailDetailCardScreen
 import com.alagunas.canigetacocktail.ui.screens.CocktailListScreen
 import com.alagunas.canigetacocktail.ui.screens.MainScreen
+import com.alagunas.canigetacocktail.ui.theme.CanIGetACocktailTheme
 import com.alagunas.domain.model.Cocktail
 import com.google.gson.Gson
 
