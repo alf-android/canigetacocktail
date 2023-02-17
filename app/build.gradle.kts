@@ -79,4 +79,7 @@ dependencies {
     testImplementation("junit:junit:${rootProject.extra["junitVersion"]}")
     androidTestImplementation("androidx.test.ext:junit:${rootProject.extra["testJunitVersion"]}")
     androidTestImplementation("androidx.test.espresso:espresso-core:${rootProject.extra["testEspressoVersion"]}")
+
+    implementation("io.coil-kt:coil-compose:${rootProject.extra["coilVersion"]}")
+    implementation("com.google.code.gson:gson:${rootProject.extra["gsonVersion"]}")
 }

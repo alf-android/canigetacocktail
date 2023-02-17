@@ -1,4 +1,4 @@
-package com.alagunas.canigetacocktail.ui.activities.ui.theme
+package com.alagunas.canigetacocktail.ui.theme
 
 import android.app.Activity
 import android.os.Build
@@ -13,18 +13,19 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.res.colorResource
 import androidx.core.view.ViewCompat
+import com.alagunas.canigetacocktail.R
+import com.alagunas.canigetacocktail.ui.activities.ui.theme.*
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = MyRed,
+    secondary = MyGray
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
+    primary = MyRed,
+    secondary = MyGray
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),

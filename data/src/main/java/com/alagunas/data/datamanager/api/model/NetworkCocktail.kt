@@ -100,5 +100,6 @@ fun NetworkCocktail.toCocktail() =
     Cocktail(
         id = id,
         name = name,
-        description = instructions
+        description = instructionsES,
+        thumb = thumb
     )

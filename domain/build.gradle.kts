@@ -36,6 +36,8 @@ dependencies {
 
     implementation(project(":common"))
 
+    implementation("com.google.code.gson:gson:${rootProject.extra["gsonVersion"]}")
+
     testImplementation("junit:junit:${rootProject.extra["junitVersion"]}")
     androidTestImplementation("androidx.test.ext:junit:${rootProject.extra["testJunitVersion"]}")
     androidTestImplementation("androidx.test.espresso:espresso-core:${rootProject.extra["testEspressoVersion"]}")

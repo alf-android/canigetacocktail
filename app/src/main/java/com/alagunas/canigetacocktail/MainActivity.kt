@@ -3,22 +3,27 @@ package com.alagunas.canigetacocktail
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.res.colorResource
 import androidx.navigation.NavHostController
-import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.alagunas.canigetacocktail.ui.activities.ui.theme.CanIGetACocktailTheme
+import com.alagunas.canigetacocktail.ui.navigation.CocktailArgType
 import com.alagunas.canigetacocktail.ui.screens.CocktailDetailCardScreen
 import com.alagunas.canigetacocktail.ui.screens.CocktailListScreen
 import com.alagunas.canigetacocktail.ui.screens.MainScreen
+import com.alagunas.canigetacocktail.ui.theme.CanIGetACocktailTheme
+import com.alagunas.domain.model.Cocktail
+import com.google.gson.Gson
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,7 +35,16 @@ class MainActivity : AppCompatActivity() {
             CanIGetACocktailTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(
+                            brush = Brush.verticalGradient(
+                                colors = listOf(
+                                    colorResource(id = R.color.primary_color),
+                                    colorResource(id = R.color.secondary_color)
+                                )
+                            )
+                        ),
                     color = MaterialTheme.colorScheme.background
                 ) {
                     val navController: NavHostController = rememberNavController()
@@ -52,14 +66,16 @@ fun CocktailNavHost(navController: NavHostController) {
             CocktailListScreen(navController)
         }
         composable(
-            route = "cocktaildetail/{cocktailId}",
+            route = "cocktaildetail/{cocktail}",
             arguments = listOf(
-                navArgument("cocktailId") { type = NavType.IntType }
+                navArgument("cocktail") { type = CocktailArgType() }
             )
-        ) {
-            val id = it.arguments?.getInt("cocktailId")
-            requireNotNull(id) { "Cocktail Id cannot be null." }
-            CocktailDetailCardScreen(imageFromAPI = "", cocktailId = id)
+        ) { navBackStackEntry ->
+            val cocktail = navBackStackEntry.arguments?.getString("cocktail")
+                ?.let { Gson().fromJson(it, Cocktail::class.java) }
+//            val id = navBackStackEntry.arguments?.getInt("cocktailId")
+            requireNotNull(cocktail) { "Cocktail entity cannot be null." }
+            CocktailDetailCardScreen(cocktail)
         }
     }
 }
