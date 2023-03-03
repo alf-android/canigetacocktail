@@ -10,13 +10,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.compose.rememberAsyncImagePainter
 import imageShape
 
 @Composable
-fun CocktailImage(image: String, modifier: Modifier) {
+fun CocktailImage(image: String, modifier: Modifier, size: Dp) {
     Card(
         shape = imageShape,
         modifier = modifier
@@ -25,7 +27,7 @@ fun CocktailImage(image: String, modifier: Modifier) {
             model = image,
             contentDescription = null,
             modifier = Modifier
-                .size(200.dp)
+                .size(size)
                 .clip(imageShape)
                 .border(width = 1.dp, color = Color.Black, shape = imageShape)
         )

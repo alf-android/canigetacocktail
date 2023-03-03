@@ -16,22 +16,13 @@ class CocktailDetailViewModel(private val cocktailDAO: CocktailDAO) : BaseViewMo
 
     fun setCocktail(name: String) {
         viewModelScope.launch {
-            cocktailDAO.insert(
-                CocktailEntity(
-                    id = List(1) { Random.nextInt(100) }.first().toString(),
-                    name = name,
-                    instruction = ""
-                )
-            )
+//            cocktailDAO.insert(
+//                CocktailEntity(
+//                    id = List(1) { Random.nextInt(100) }.first().toString(),
+//                    name = name
+//                )
+//            )
         }
 
-    }
-
-    fun getAllCocktails() {
-        viewModelScope.launch {
-            val cocktail = cocktailDAO.getAll().lastOrNull()
-            _showCocktail.value = null
-            _showCocktail.value = Cocktail(id = cocktail?.id?:"0", name = cocktail?.name?:"Cocktail not found", description = "${cocktailDAO.getAll().size}")
-        }
     }
 }
