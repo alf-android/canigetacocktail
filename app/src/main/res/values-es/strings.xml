@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">CanIGetACocktail</string>
-    <string name="ingredients">Ingredients</string>
-    <string name="loading">Loading…</string>
-    <string name="network_error">Network error.</string>
-    <string name="cocktails_not_found">Cocktails not found.</string>
-    <string name="no_name">No name for this Cocktail</string>
+    <string name="ingredients">Ingredientes</string>
+    <string name="loading">Cargando…</string>
+    <string name="network_error">Error de connexión.</string>
+    <string name="cocktails_not_found">Sin resultados.</string>
+    <string name="no_name">Cocktail sin nombre</string>
     <string name="check_cocktails">Check Cocktails</string>
     <string name="manage_my_cocktails">Manage my Cocktails</string>
     <string name="my_minibar">My Minibar</string>

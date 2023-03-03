@@ -7,6 +7,6 @@ import org.koin.dsl.module
 
 val uiModule = module {
 
-    viewModel { CocktailListViewModel(get(), get(), get()) }
+    viewModel { CocktailListViewModel(get()) }
     viewModel { CocktailDetailViewModel(get()) }
 }

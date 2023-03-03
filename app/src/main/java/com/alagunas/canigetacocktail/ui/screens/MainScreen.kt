@@ -9,6 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
@@ -50,17 +51,17 @@ fun MainScreen(
                     colors = ButtonDefaults.buttonColors(containerColor = Color.Black),
                     shape = buttonShape
                 ) {
-                    Text(text = "Check Cocktails")
+                    Text(text = stringResource(R.string.check_cocktails))
                 }
                 Button(onClick = { /*TODO*/ },
                     colors = ButtonDefaults.buttonColors(containerColor = Color.Black),
                     shape = buttonShape) {
-                    Text(text = "Manage my Cocktails")
+                    Text(text = stringResource(R.string.manage_my_cocktails))
                 }
                 Button(onClick = { /*TODO*/ },
                     colors = ButtonDefaults.buttonColors(containerColor = Color.Black),
                     shape = buttonShape) {
-                    Text(text = "My Minibar")
+                    Text(text = stringResource(R.string.my_minibar))
                 }
             }
         }

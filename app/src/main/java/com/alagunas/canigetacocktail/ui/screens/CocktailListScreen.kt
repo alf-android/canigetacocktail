@@ -3,8 +3,9 @@ package com.alagunas.canigetacocktail.ui.screens
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -14,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -24,6 +26,7 @@ import com.alagunas.canigetacocktail.ui.items.CocktailImage
 import com.alagunas.canigetacocktail.viewmodels.CocktailListViewModel
 import com.alagunas.data.fold
 import com.alagunas.domain.model.Cocktail
+import com.alagunas.domain.model.bestName
 import org.koin.androidx.compose.getViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -60,7 +63,7 @@ fun CocktailListScreen(
                 cocktailsFromRepo.fold(
                     ifLoading = {
                         Text(
-                            text = "Loading...",
+                            text = stringResource(R.string.loading),
                             color = Color.White,
                             modifier = Modifier
                                 .fillMaxHeight()
@@ -69,8 +72,8 @@ fun CocktailListScreen(
                                 .wrapContentHeight(align = Alignment.CenterVertically)
                         )
                     },
-                    ifNoInternet = { Text(text = "Network error.") },
-                    onError = { Text(text = "Cocktails not found.") },
+                    ifNoInternet = { Text(text = stringResource(R.string.network_error)) },
+                    onError = { Text(text = stringResource(R.string.cocktails_not_found)) },
                     onSuccess = {
                         CocktailList(navController = navController, cocktails = it)
                     }
@@ -117,20 +120,14 @@ fun CocktailList(
     navController: NavController,
     cocktails: List<Cocktail>
 ) {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .wrapContentWidth(align = Alignment.CenterHorizontally)
-            .padding(16.dp)
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(2),
+        verticalArrangement = Arrangement.spacedBy(5.dp),
+        horizontalArrangement = Arrangement.spacedBy(5.dp)
     ) {
-        LazyColumn(
-            verticalArrangement = Arrangement.spacedBy(8.dp),
-            contentPadding = PaddingValues(5.dp)
-        ) {
-            items(cocktails) { cocktail ->
-                CocktailItem(cocktail) {
-                    navController.navigate(route = "cocktaildetail/$cocktail")
-                }
+        items(cocktails) { cocktail ->
+            CocktailItem(cocktail) {
+                navController.navigate(route = "cocktaildetail/$cocktail")
             }
         }
     }
@@ -146,19 +143,19 @@ fun CocktailItem(cocktail: Cocktail, onCocktailClicked: () -> Unit) {
         CocktailImage(
             image = cocktail.thumb ?: "",
             modifier = Modifier
-                .padding(top = 10.dp, bottom = 5.dp)
+                .padding(top = 5.dp, bottom = 5.dp),
+            size = 150.dp
         )
         Text(
             modifier = Modifier
                 .align(Alignment.CenterHorizontally),
-            text = cocktail.name ?: "No name"
+            text = cocktail.bestName() ?: stringResource(R.string.no_name),
         )
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Preview(showBackground = true)
 @Composable
 fun CocktailListScreenPreview() {
-    CocktailItem(Cocktail(id = "1", name = "cocktail test", description = "No description"), {})
+    CocktailItem(Cocktail(id = "1", name = "cocktail test", instructionsEN = "No description"), {})
 }

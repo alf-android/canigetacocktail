@@ -9,12 +9,24 @@ import com.alagunas.domain.model.Cocktail
 data class CocktailEntity(
     @PrimaryKey val id: String,
     @ColumnInfo(name = "name") val name: String?,
-    @ColumnInfo(name = "instruction") val instruction: String?
+    @ColumnInfo(name = "alternativeName") val alternativeName: String?,
+    @ColumnInfo(name = "instructionsEN") val instructionsEN: String?,
+    @ColumnInfo(name = "instructionsES") val instructionsES: String?,
+    @ColumnInfo(name = "instructionsDE") val instructionsDE: String?,
+    @ColumnInfo(name = "instructionsFR") val instructionsFR: String?,
+    @ColumnInfo(name = "instructionsIT") val instructionsIT: String?,
+    @ColumnInfo(name = "thumb") val thumb: String?
 )
 
 fun CocktailEntity.toCocktail() =
     Cocktail(
         id = id,
-        name = name.orEmpty(),
-        description = instruction.orEmpty()
+        name = name,
+        alternativeName = alternativeName,
+        instructionsEN = instructionsEN,
+        instructionsES = instructionsES,
+        instructionsDE = instructionsDE,
+        instructionsFR = instructionsFR,
+        instructionsIT = instructionsIT,
+        thumb = thumb
     )
